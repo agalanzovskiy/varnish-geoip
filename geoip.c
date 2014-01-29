@@ -104,7 +104,7 @@ static int geoip_lookup_country(vcl_string *ip, vcl_string *resolved) {
 
 #ifdef __VCL__
 /* Returns the GeoIP info as synthetic response */
-void vcl_geoip_send_synthetic(const struct sess *sp) {
+void vcl_geoip_send_synthetic(struct sess *sp) {
     vcl_string hval[HEADER_MAXLEN];
     vcl_string *ip = VRT_IP_string(sp, VRT_r_client_ip(sp));
     if (geoip_lookup(ip, hval)) {
